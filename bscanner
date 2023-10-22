@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Tampilkan dialog input untuk memasukkan alamat IP atau host
+ip_or_host=$(zenity --entry --title="Pindai Port" --text="Masukkan alamat IP atau nama host:")
+
+# Periksa apakah pengguna memasukkan alamat IP atau nama host
+if [ -z "$ip_or_host" ]; then
+    zenity --error --text="Anda harus memasukkan alamat IP atau nama host."
+    exit 1
+fi
+
+# Jalankan Nmap untuk memindai port terbuka
+result=$(nmap -p- "$ip_or_host" 2>&1)
+
+# Tampilkan hasil pemindaian dalam dialog teks
+zenity --info --title="Hasil Pemindaian" --text="Hasil pemindaian port untuk $ip_or_host:\n\n$result"
