@@ -26,21 +26,11 @@ berlaku_hingga=$(zenity --entry --title "Masukkan Berlaku Hingga" --text "Berlak
 # Menyimpan data baru ke dalam berkas CSV
 echo "$nik,$nama,$tempat_lahir,$jenis_kelamin,$alamat,$agama,$status_perkawinan,$pekerjaan,$kewarganegaraan,$berlaku_hingga" >> "$data_file"
 
-# Menampilkan data dalam bentuk list Zenity
+# Menampilkan data dalam bentuk list Zenity dengan judul kolom
 {
-  echo "Data Lama:"
+  echo "NIK|Nama|Tempat Tanggal Lahir|Jenis Kelamin|Alamat|Agama|Status Perkawinan|Pekerjaan|Kewarganegaraan|Berlaku Hingga"
   echo "$data_existing"
-  echo "Data Baru:"
-  echo "NIK: $nik"
-  echo "Nama: $nama"
-  echo "Tempat Tanggal Lahir: $tempat_lahir"
-  echo "Jenis Kelamin: $jenis_kelamin"
-  echo "Alamat: $alamat"
-  echo "Agama: $agama"
-  echo "Status Perkawinan: $status_perkawinan"
-  echo "Pekerjaan: $pekerjaan"
-  echo "Kewarganegaraan: $kewarganegaraan"
-  echo "Berlaku Hingga: $berlaku_hingga"
-} | zenity --list --title "Data Anda" --text "Data Anda" --width 500 --height 400
+  echo "$nik|$nama|$tempat_lahir|$jenis_kelamin|$alamat|$agama|$status_perkawinan|$pekerjaan|$kewarganegaraan|$berlaku_hingga"
+} | zenity --list --title "Data Anda" --text "Data Anda" --column "NIK" --column "Nama" --column "Tempat Tanggal Lahir" --column "Jenis Kelamin" --column "Alamat" --column "Agama" --column "Status Perkawinan" --column "Pekerjaan" --column "Kewarganegaraan" --column "Berlaku Hingga" --width 600 --height 400
 
 exit 0
