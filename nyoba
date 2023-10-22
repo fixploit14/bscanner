@@ -26,7 +26,7 @@ berlaku_hingga=$(zenity --entry --title "Masukkan Berlaku Hingga" --text "Berlak
 # Menyimpan data baru ke dalam berkas CSV
 echo "$nik,$nama,$tempat_lahir,$jenis_kelamin,$alamat,$agama,$status_perkawinan,$pekerjaan,$kewarganegaraan,$berlaku_hingga" >> "$data_file"
 
-# Menampilkan data lama dan data baru dalam Zenity
-zenity --text-info --title "Data Anda" --filename="$data_file"
+# Menampilkan data lama dan data baru dalam bentuk tabel Zenity
+(echo "$data_existing"; echo "$nik,$nama,$tempat_lahir,$jenis_kelamin,$alamat,$agama,$status_perkawinan,$pekerjaan,$kewarganegaraan,$berlaku_hingga") | zenity --text-info --title "Data Anda" --width 600 --height 400
 
 exit 0
