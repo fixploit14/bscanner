@@ -1,16 +1,18 @@
 #!/bin/bash
 
-# Tampilkan dialog input untuk memasukkan alamat IP atau host
-ip_or_host=$(zenity --entry --title="Pindai Port" --text="Masukkan alamat IP atau nama host:")
+# Menggunakan Zenity untuk meminta input pengguna
+nik=$(zenity --entry --title "Masukkan NIK" --text "NIK:")
+nama=$(zenity --entry --title "Masukkan Nama" --text "Nama:")
+tempat_lahir=$(zenity --entry --title "Masukkan Tempat Tanggal Lahir" --text "Tempat Tanggal Lahir:")
+jenis_kelamin=$(zenity --entry --title "Masukkan Jenis Kelamin" --text "Jenis Kelamin:")
+alamat=$(zenity --entry --title "Masukkan Alamat" --text "Alamat:")
+agama=$(zenity --entry --title "Masukkan Agama" --text "Agama:")
+status_perkawinan=$(zenity --entry --title "Masukkan Status Perkawinan" --text "Status Perkawinan:")
+pekerjaan=$(zenity --entry --title "Masukkan Pekerjaan" --text "Pekerjaan:")
+kewarganegaraan=$(zenity --entry --title "Masukkan Kewarganegaraan" --text "Kewarganegaraan:")
+berlaku_hingga=$(zenity --entry --title "Masukkan Berlaku Hingga" --text "Berlaku Hingga:")
 
-# Periksa apakah pengguna memasukkan alamat IP atau nama host
-if [ -z "$ip_or_host" ]; then
-    zenity --error --text="Anda harus memasukkan alamat IP atau nama host."
-    exit 1
-fi
+# Menampilkan data dalam tabel Zenity
+zenity --info --title "Data Anda" --text "<b>NIK</b>: $nik\n<b>Nama</b>: $nama\n<b>Tempat Tanggal Lahir</b>: $tempat_lahir\n<b>Jenis Kelamin</b>: $jenis_kelamin\n<b>Alamat</b>: $alamat\n<b>Agama</b>: $agama\n<b>Status Perkawinan</b>: $status_perkawinan\n<b>Pekerjaan</b>: $pekerjaan\n<b>Kewarganegaraan</b>: $kewarganegaraan\n<b>Berlaku Hingga</b>: $berlaku_hingga"
 
-# Jalankan Nmap untuk memindai port terbuka
-result=$(nmap -p- "$ip_or_host" 2>&1)
-
-# Tampilkan hasil pemindaian dalam dialog teks
-zenity --info --title="Hasil Pemindaian" --text="Hasil pemindaian port untuk $ip_or_host:\n\n$result"
+exit 0
