@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Buat array untuk menyimpan data
+data=()
+
+# Menggunakan Zenity untuk meminta input pengguna
+nik=$(zenity --entry --title "Masukkan NIK" --text "NIK:")
+nama=$(zenity --entry --title "Masukkan Nama" --text "Nama:")
+tempat_lahir=$(zenity --entry --title "Masukkan Tempat Tanggal Lahir" --text "Tempat Tanggal Lahir:")
+jenis_kelamin=$(zenity --entry --title "Masukkan Jenis Kelamin" --text "Jenis Kelamin:")
+alamat=$(zenity --entry --title "Masukkan Alamat" --text "Alamat:")
+agama=$(zenity --entry --title "Masukkan Agama" --text "Agama:")
+status_perkawinan=$(zenity --entry --title "Masukkan Status Perkawinan" --text "Status Perkawinan:")
+pekerjaan=$(zenity --entry --title "Masukkan Pekerjaan" --text "Pekerjaan:")
+kewarganegaraan=$(zenity --entry --title "Masukkan Kewarganegaraan" --text "Kewarganegaraan:")
+berlaku_hingga=$(zenity --entry --title "Masukkan Berlaku Hingga" --text "Berlaku Hingga:")
+
+# Menyimpan data dalam array
+data+=("NIK: $nik" "Nama: $nama" "Tempat Tanggal Lahir: $tempat_lahir" "Jenis Kelamin: $jenis_kelamin" "Alamat: $alamat" "Agama: $agama" "Status Perkawinan: $status_perkawinan" "Pekerjaan: $pekerjaan" "Kewarganegaraan: $kewarganegaraan" "Berlaku Hingga: $berlaku_hingga")
+
+# Menampilkan data dalam tabel Zenity
+zenity --list --title "Data Anda" --column="Informasi" "${data[@]}"
+
+exit 0
