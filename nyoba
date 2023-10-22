@@ -9,7 +9,7 @@ if [ ! -e "$data_file" ]; then
 fi
 
 # Membaca data yang sudah ada dari berkas
-data=$(cat "$data_file")
+data_existing=$(cat "$data_file")
 
 # Menggunakan Zenity untuk meminta input pengguna
 nik=$(zenity --entry --title "Masukkan NIK" --text "NIK:")
@@ -26,7 +26,7 @@ berlaku_hingga=$(zenity --entry --title "Masukkan Berlaku Hingga" --text "Berlak
 # Menyimpan data baru ke dalam berkas CSV
 echo "$nik,$nama,$tempat_lahir,$jenis_kelamin,$alamat,$agama,$status_perkawinan,$pekerjaan,$kewarganegaraan,$berlaku_hingga" >> "$data_file"
 
-# Menampilkan data dalam tabel Zenity
-zenity --info --title "Data Anda" --text "<b>NIK</b>: $nik\n<b>Nama</b>: $nama\n<b>Tempat Tanggal Lahir</b>: $tempat_lahir\n<b>Jenis Kelamin</b>: $jenis_kelamin\n<b>Alamat</b>: $alamat\n<b>Agama</b>: $agama\n<b>Status Perkawinan</b>: $status_perkawinan\n<b>Pekerjaan</b>: $pekerjaan\n<b>Kewarganegaraan</b>: $kewarganegaraan\n<b>Berlaku Hingga</b>: $berlaku_hingga"
+# Menampilkan data lama dan data baru dalam Zenity
+zenity --text-info --title "Data Anda" --filename="$data_file"
 
 exit 0
